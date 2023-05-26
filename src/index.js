@@ -11,7 +11,7 @@ function renderNewOption(cats) {
   console.log(cats);
   const template = cats
     .map(cat => {
-      return `<option value="${cat.id}">"${cat.name}"</option>`;
+      return `<option value="${cat.id}">${cat.name}</option>`;
     })
     .join('');
 
