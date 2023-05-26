@@ -29,5 +29,12 @@ select.addEventListener('change', (e) => {
 function generateImage(cat) {
   console.log(cat);
 
+  const image = document.createElement('img');
+  image.setAttribute('src', cat[0].url);
 
+ 
+    catInfo.appendChild(image);
+
+  
+  console.log(image);
 }
