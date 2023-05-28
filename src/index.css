@@ -9,3 +9,11 @@
 .name {
   font-size: 30px;
 }
+
+.select-visible {
+  display: inline-block;
+}
+
+.select-invisible {
+  display: none;
+}

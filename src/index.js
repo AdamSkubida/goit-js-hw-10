@@ -3,15 +3,25 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const select = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
+const loader = document.querySelector('.loader');
+const errorText = document.querySelector('.error');
+
+select.classList.add('select-invisible');
 
 fetchBreeds()
   .then(cats => renderNewOption(cats))
-  .catch(error => Notify.failure(error));
+  .catch(error => {
+    Notify.failure(error);
+    errorAlert();
+  });
 
 select.addEventListener('change', e => {
   fetchCatByBreed(e.target.value)
     .then(cat => generateImage(cat))
-    .catch(error => Notify.failure(error));
+    .catch(error => {
+      Notify.failure(error);
+      errorAlert();
+    });
 });
 
 function renderNewOption(cats) {
@@ -22,6 +32,8 @@ function renderNewOption(cats) {
     })
     .join('');
 
+  loader.textContent = '';
+  select.classList.replace('select-invisible', 'select-visible');
   select.innerHTML = template;
 }
 
@@ -46,6 +58,7 @@ function generateImage(cat) {
     .then(response => {
       if (!response.ok) {
         Notify.failure(response.status);
+        errorAlert();
       }
       return response.json();
     })
@@ -70,4 +83,11 @@ function generateImage(cat) {
       catInfo.insertAdjacentHTML('beforeend', temperamentHTML);
       return data;
     });
+}
+
+function errorAlert() {
+  catInfo.classList.add('select-invisible');
+  loader.textContent = '';
+  errorText.classList.replace('select-invisible', 'select-visible');
+  select.classList.add('select-invisible');
 }
