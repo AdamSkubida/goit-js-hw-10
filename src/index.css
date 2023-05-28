@@ -1,17 +1,41 @@
+.select-visible {
+  display: inline-block;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+  background-color: rgba(0, 0, 0, 0.342);
+  font-family: 'Quicksand', sans-serif;
+}
+
+.breed-select {
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+}
+
 .cat-info {
   width: 500px;
   margin: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border: 1px solid black;
+  padding: 20px 10px 20px 10px;
+  border-radius: 10px;
+}
+
+.cat-image {
+  border-radius: 10px;
 }
 
 .name {
   font-size: 30px;
-}
-
-.select-visible {
-  display: inline-block;
 }
 
 .select-invisible {

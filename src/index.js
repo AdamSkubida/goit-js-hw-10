@@ -7,6 +7,7 @@ const loader = document.querySelector('.loader');
 const errorText = document.querySelector('.error');
 
 select.classList.add('select-invisible');
+catInfo.classList.add('select-invisible');
 
 fetchBreeds()
   .then(cats => renderNewOption(cats))
@@ -47,6 +48,7 @@ function generateImage(cat) {
     })
     .join('');
 
+  catInfo.classList.replace('select-invisible', 'select-visible');
   catInfo.innerHTML = catImage;
 
   const newBreedId = cat.map(data => {
