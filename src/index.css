@@ -38,6 +38,11 @@ body {
   font-size: 30px;
 }
 
+.temperament {
+  border-bottom: 1px dotted black;
+  padding-bottom: 15px;
+}
+
 .select-invisible {
   display: none;
 }

@@ -17,12 +17,12 @@ fetchBreeds()
   });
 
 select.addEventListener('change', e => {
-  fetchCatByBreed(e.target.value)
-    .then(cat => generateImage(cat))
-    .catch(error => {
+  fetchCatByBreed(e.target.value).then(cat => {
+    generateImage(cat).catch(error => {
       Notify.failure(error);
       errorAlert();
     });
+  });
 });
 
 function renderNewOption(cats) {
@@ -68,21 +68,23 @@ function generateImage(cat) {
       console.log(data);
 
       const name = data.breeds[0].name;
-      const description = data.breeds[0].wikipedia_url;
+      const description = data.breeds[0].description;
       const temperament = data.breeds[0].temperament;
 
       console.log('-----------------------');
       console.log('INFO:');
-      console.log(name);
-      console.log(description);
-      console.log(temperament);
+      console.log(`name: ${name}`);
+      console.log(`description: "${description}`);
+      console.log(`temperament: "${temperament}`);
       console.log('-----------------------');
 
       const nameHTML = `<span class="name"><b>${name}</b></span>`;
       const temperamentHTML = `<span class="temperament"><b>Temperament:</b> ${temperament}</span>`;
+      const descriptionHTML = `<span class="description">${description}</span>`;
 
       catInfo.insertAdjacentHTML('beforeend', nameHTML);
       catInfo.insertAdjacentHTML('beforeend', temperamentHTML);
+      catInfo.insertAdjacentHTML('beforeend', descriptionHTML);
       return data;
     });
 }
